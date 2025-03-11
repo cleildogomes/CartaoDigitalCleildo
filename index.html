@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleildo Gomes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('src/textura-preto.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #cfe413;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 20%;
+            border: 3px solid #cfe413;
+            margin-bottom: 10px;
+        }
+
+        .copiarPix {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            background-color: #44414180;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .copiarPix:hover {
+            background-color: #b6de87b3;
+        }
+
+        .links {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .links a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            background-color: #44414180;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .links a:hover {
+            background-color: #b6de87b3;
+        }
+
+        .links a i {
+            margin-left: 10px;
+        }
+
+        .meuContato {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            background-color: #44414180;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .meuContato:hover {
+            background-color: #4d5247b3;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="src/cleildo.jpg" alt="Minha Foto" class="profile-pic">
+    <h1>Cleildo Gomes</h1>
+    <p>Desenvolvedor Web Front-end</p>
+    <p>Porto Velho-RO</p>
+    <button id="copiarPix" class="copiarPix">Copiar e colar PIX <i class="fas fa-clipboard"></i></button>
+    <script>
+        document.getElementById('copiarPix').addEventListener('click', function () {
+            const pixKey = "00020126360014br.gov.bcb.pix0114+55699840706495204000053039865802BR5922Cleildo Gomes da Silva6008Brasilia62220518daqr5071974347997563047AC8";
+            navigator.clipboard.writeText(pixKey).then(function () {
+                alert("Chave Pix copiada para a área de transferência!");
+            }, function (err) {
+                alert("Não foi possível copiar a chave Pix.");
+            });
+        });
+    </script>
+    
+    <div class="links">
+        <a href="tel:69984070649" class="meuContato">
+            Meu contato 
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/5569984070649" target="_blank">
+            WhatsApp
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://t.me/cleildogomes" target="_blank">
+            Telegram
+            <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://github.com/cleildogomes" target="_blank">
+            GitHub
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/cleildogomes" target="_blank">
+            Instagram
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</body>
+
+</html>
