@@ -21,6 +21,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
 
         .profile-pic {
             width: 200px;
@@ -30,15 +31,19 @@
             margin-bottom: 10px;
         }
 
-        .copiarPix {
+        .copiarPix,
+        .links a,
+        .meuContato {
             margin-top: 20px;
-            width: 100%;
+            width: 90%;
+            /* Ajuste para ocupar 90% da largura da tela */
             max-width: 300px;
+            /* Mantém um limite máximo */
             display: flex;
             align-items: center;
             justify-content: space-between;
             text-decoration: none;
-            color: #ffffff;
+            color: white;
             font-size: 18px;
             background-color: #44414180;
             padding: 10px 20px;
@@ -48,31 +53,9 @@
             cursor: pointer;
         }
 
-        .copiarPix:hover {
-            background-color: #b6de87b3;
-        }
-
-        .links {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .links a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 10px 0;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            background-color: #44414180;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .links a:hover {
+        .copiarPix:hover,
+        .links a:hover,
+        .meuContato:hover {
             background-color: #b6de87b3;
         }
 
@@ -80,26 +63,19 @@
             margin-left: 10px;
         }
 
-        .meuContato {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            background-color: #44414180;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
+        /* Media queries para telas menores */
+        @media (max-width: 600px) {
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
 
-        .meuContato:hover {
-            background-color: #4d5247b3;
+            .copiarPix,
+            .links a,
+            .meuContato {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
@@ -111,19 +87,19 @@
     <p>Porto Velho-RO</p>
     <button id="copiarPix" class="copiarPix">Copiar e colar PIX <i class="fas fa-clipboard"></i></button>
     <script>
-        document.getElementById('copiarPix').addEventListener('click', function () {
+        document.getElementById('copiarPix').addEventListener('click', function() {
             const pixKey = "00020126360014br.gov.bcb.pix0114+55699840706495204000053039865802BR5922Cleildo Gomes da Silva6008Brasilia62220518daqr5071974347997563047AC8";
-            navigator.clipboard.writeText(pixKey).then(function () {
+            navigator.clipboard.writeText(pixKey).then(function() {
                 alert("Chave Pix copiada para a área de transferência!");
-            }, function (err) {
+            }, function(err) {
                 alert("Não foi possível copiar a chave Pix.");
             });
         });
     </script>
-    
+
     <div class="links">
         <a href="tel:69984070649" class="meuContato">
-            Meu contato 
+            Meu contato
             <i class="fas fa-phone"></i>
         </a>
         <a href="https://wa.me/5569984070649" target="_blank">
