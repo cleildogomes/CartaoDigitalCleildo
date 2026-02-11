@@ -4,122 +4,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleildo Gomes</title>
+    <title>Cleildo Gomes - Portfólio</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <style>
+        /* --- Animações Principais --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseEffect {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(207, 228, 19, 0.7);
+            }
+            70% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 10px rgba(207, 228, 19, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(207, 228, 19, 0);
+            }
+        }
+
+        /* --- Estilos Gerais --- */
         body {
             margin: 0;
-            padding: 50px 0 0 0;
-            font-family: Arial, sans-serif;
+            padding: 40px 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #121212; /* Fundo escuro base */
             background-image: url('textura-preto.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: #cfe413;
             text-align: center;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden;
         }
 
         .profile-pic {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 20%;
-            border: 5px solid #cfe413;
-            margin-bottom: 10px;
+            border: 4px solid #cfe413;
+            margin-bottom: 15px;
+            object-fit: cover;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        .copiarPix,
-        .links a,
-        .meuContato {
-            margin-top: 20px;
+        h1 {
+            margin: 10px 0;
+            font-size: 2.2rem;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .description {
+            max-width: 85%;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+            color: #ffffff;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* --- Container de Links --- */
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Estilo Base dos Botões */
+        .btn-link {
             width: 90%;
-            /* Ajuste para ocupar 90% da largura da tela */
-            max-width: 300px;
-            /* Mantém um limite máximo */
+            max-width: 350px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             text-decoration: none;
             color: white;
-            font-size: 18px;
-            background-color: #44414180;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            border: none;
+            font-size: 16px;
+            background-color: rgba(68, 65, 65, 0.8);
+            padding: 14px 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(207, 228, 19, 0.1);
             cursor: pointer;
+            opacity: 0; /* Invisível para a animação de entrada */
+            animation: fadeInUp 0.5s ease forwards;
         }
 
-        .copiarPix:hover,
-        .links a:hover,
-        .meuContato:hover {
-            background-color: #b6de87b3;
+        .btn-link:hover {
+            background-color: #cfe413;
+            color: #000;
+            transform: translateY(-3px);
+            border-color: #cfe413;
         }
 
-        .links a i {
-            margin-left: 10px;
+        .btn-link i {
+            font-size: 20px;
         }
 
-        /* Media queries para telas menores */
-        @media (max-width: 600px) {
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-            }
+        /* Botão PIX com Destaque e Pulsação */
+        .btn-pix {
+            background-color: #cfe413;
+            color: #1a1a1a;
+            font-weight: bold;
+            animation: fadeInUp 0.5s ease forwards, pulseEffect 2s infinite ease-in-out;
+            animation-delay: 0.1s, 1.2s; /* Pulsação começa após aparecer */
+        }
 
-            .copiarPix,
-            .links a,
-            .meuContato {
-                font-size: 16px;
-                padding: 8px 16px;
-            }
+        /* Delays para efeito cascata nos botões */
+        .links .btn-link:nth-child(2) { animation-delay: 0.2s; }
+        .links .btn-link:nth-child(3) { animation-delay: 0.3s; }
+        .links .btn-link:nth-child(4) { animation-delay: 0.4s; }
+        .links .btn-link:nth-child(5) { animation-delay: 0.5s; }
+        .links .btn-link:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Responsividade Extra */
+        @media (max-width: 480px) {
+            .profile-pic { width: 150px; height: 150px; }
+            h1 { font-size: 1.8rem; }
+            .btn-link { font-size: 15px; padding: 12px 20px; }
         }
     </style>
 </head>
 
 <body>
-    <img src="cleildo.jpeg" alt="Minha Foto" class="profile-pic">
+
+    <img src="cleildo.jpeg" alt="Cleildo Gomes" class="profile-pic">
+    
     <h1>Cleildo Gomes</h1>
-    <p>Especialista em Suporte de TI | Engenheiro de Dados | Gestor de TI | Analista e Desenvolvedor de Sistemas</p>
-    <p>Porto Velho-RO</p>
-    <button id="copiarPix" class="copiarPix">Copiar e colar PIX <i class="fas fa-clipboard"></i></button>
+    
+    <div class="description">
+        <p>Especialista em Suporte de TI | Engenheiro de Dados | Gestor de TI | Analista e Desenvolvedor de Sistemas</p>
+        <p><i class="fas fa-map-marker-alt"></i> Porto Velho-RO</p>
+    </div>
+
+    <div class="links">
+        <button id="copiarPix" class="btn-link btn-pix">
+            Copiar e colar PIX <i class="fas fa-copy"></i>
+        </button>
+
+        <a href="tel:69984070649" class="btn-link">
+            Meu contato <i class="fas fa-phone"></i>
+        </a>
+
+        <a href="https://api.whatsapp.com/send?phone=5569984070649&text=Olá" target="_blank" class="btn-link">
+            WhatsApp <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <a href="https://t.me/cleildogomes" target="_blank" class="btn-link">
+            Telegram <i class="fab fa-telegram"></i>
+        </a>
+
+        <a href="https://github.com/cleildogomes/cleildogomes" target="_blank" class="btn-link">
+            GitHub <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://instagram.com/cleildogomes" target="_blank" class="btn-link">
+            Instagram <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
     <script>
         document.getElementById('copiarPix').addEventListener('click', function() {
             const pixKey = "00020126360014br.gov.bcb.pix0114+55699840706495204000053039865802BR5922Cleildo Gomes da Silva6008Brasilia62220518daqr5071974347997563047AC8";
+            
             navigator.clipboard.writeText(pixKey).then(function() {
-                alert("Chave Pix copiada para a área de transferência!");
-            }, function(err) {
-                alert("Não foi possível copiar a chave Pix.");
+                // 1. Efeito de Confete
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.7 },
+                    colors: ['#cfe413', '#ffffff', '#2ecc71']
+                });
+
+                // 2. Feedback Visual no Botão
+                const btn = document.getElementById('copiarPix');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = "Copiado com Sucesso! <i class='fas fa-check'></i>";
+                btn.style.backgroundColor = "#ffffff";
+                btn.style.color = "#1a1a1a";
+                
+                // Remove temporariamente a pulsação para destacar o "Copiado"
+                btn.style.animation = "none";
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = "";
+                    btn.style.color = "";
+                    btn.style.animation = "pulseEffect 2s infinite ease-in-out";
+                }, 3000);
+
+            }).catch(function(err) {
+                console.error('Erro ao copiar: ', err);
             });
         });
     </script>
 
-    <div class="links">
-        <a href="tel:69984070649" class="meuContato">
-            Meu contato
-            <i class="fas fa-phone"></i>
-        </a>
-        <a href="https://wa.me/5569984070649" target="_blank">
-            WhatsApp
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://t.me/cleildogomes" target="_blank">
-            Telegram
-            <i class="fab fa-telegram"></i>
-        </a>
-        <a href="https://github.com/cleildogomes/cleildogomes" target="_blank">
-            GitHub
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://instagram.com/cleildogomes" target="_blank">
-            Instagram
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
 </body>
-
 </html>
-
